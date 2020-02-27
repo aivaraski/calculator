@@ -6,8 +6,14 @@ import org.junit.jupiter.api.Test;
 class DataValidationTest {
     @Test
     void readParametersWhenInvalidNumberOfArguments() {
-        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> DataValidation.verifyAllArgsArePresent(new String[] {}));
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> DataValidation.verifyAllArgsArePresent(new String[]{}));
         Assertions.assertEquals("Not all or to many arguments are present", exception.getMessage(), "Incorrect error message received");
+    }
+
+    @Test
+    void readParametersWhenArgsAreNull() {
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> DataValidation.verifyAllArgsArePresent(null));
+        Assertions.assertEquals("Received null as arguments", exception.getMessage(), "Incorrect error message received");
     }
 
     @Test

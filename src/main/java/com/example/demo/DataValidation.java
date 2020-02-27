@@ -4,7 +4,10 @@ public class DataValidation {
     public static String FAIL_CAUSE;
 
     public static void verifyAllArgsArePresent(final String[] args) {
-        if (args.length != 3) {
+        if (args == null){
+            throw new IllegalArgumentException("Received null as arguments");
+        }
+        else if (args.length != 3) {
             throw new IllegalArgumentException("Not all or to many arguments are present");
         }
     }
